@@ -1,0 +1,7 @@
+﻿  pch.cpp
+  Source.cpp
+d:\вуз\lab6\lab6\lab6\source.cpp(9): warning C4101: f: неиспользованная локальная переменная
+  lab6.cpp
+d:\вуз\lab6\lab6\lab6\lab6.cpp(13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Создание кода...
+  lab6.vcxproj -> D:\ВУЗ\lab6\lab6\Debug\lab6.exe

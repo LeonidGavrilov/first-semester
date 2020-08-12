@@ -1,0 +1,134 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
+using namespace std;
+double** matrixx (double **mas,int n1)
+{
+    setlocale(LC_ALL,"Rus");
+    double per;
+    double **E=new double *[n1];
+    for(int i=0;i<n1;i++)
+        E[i]=new double [n1];
+    for (int i = 0; i < n1; i++)
+    {
+        for (int j = 0; j < n1; j++)
+        {
+            E[i][j] = 0;
+        }
+        E[i][i] = 1;
+    }
+    for(int k=0;k<n1 - 1;k++)
+    {
+        
+        for(int i=k+1;i<n1;i++)
+        {
+            per=mas[i][k] / mas[k][k];
+            for(int j=0;j<n1;j++)
+            {
+                mas[i][j]-=mas[k][j]*(per);
+                E[i][j]-=E[k][j]*(per);
+            }
+        }
+    }
+    for(int k=n1-1;k>0;k--)
+    {
+        
+        for(int i=k-1;i>=0;i--)
+        {
+            per=mas[i][k]/mas[k][k];
+            for(int j=0;j<n1;j++)
+            {
+                mas[i][j]-=mas[k][j]*(per);
+                E[i][j]-=E[k][j]*(per);
+            }
+        }
+    }
+    double m=1;
+    for(int i=0;i<n1;i++)
+    {
+        m*=mas[i][i];
+        for(int j=0;j<n1;j++)
+        {
+            E[i][j]/=mas[i][i];
+        }
+        mas[i][i]/=mas[i][i];
+    }
+    cout<<"Определитель матрицы: "<<round(m)<<endl;
+    
+    for(int i=0;i<n1;i++)
+        for(int j=0;j<n1;j++)
+            mas[i][j]=E[i][j];
+    for(int i=0;i<n1;i++)
+        delete [] E[i];
+    delete [] E;
+    cout<<"Обратная матрица: "<<endl;
+    for(int i=0;i<n1;i++)
+    {
+        for(int j=0;j<n1;j++)
+            cout<<mas[i][j]<<setw(5);
+        cout<<endl;
+    }
+    return mas;
+}
+
+int main()
+{
+  setlocale(LC_ALL, "Rus");
+    int n,k=1;
+    cout<<"Введите размерность квадратной матрицы: ";
+    cin>>n;
+    cout<<endl;
+    double **mas = new double* [n];
+    for( int i=0;i<n;i++)
+        mas[i]=new double [n];
+
+    cout<<"Введите значения матрицы через пробел: ";
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
+            cin>>mas[i][j];
+
+    double **mas2 = new double *[n];
+    for( int i=0;i<n;i++)
+        mas2[i]=new double [n];
+        
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
+            mas2[i][j]=mas[i][j];
+        
+    double **c = new double *[n];
+    for( int i=0;i<n;i++)
+        c[i]=new double [n];
+
+
+    matrixx(mas2,n);
+
+
+    for(int i=0;i<n;i++)
+       for(int j=0;j<n;j++)
+                {
+                        c[i][j]=0;
+                        for(int h=0;h<n;h++)
+                                c[i][j]+=mas2[i][h]*mas[h][j];
+
+    }
+
+    cout<<"Проверка (умножение исходное матрицы на обратную): "<<endl;
+    for(int i=0;i<n;i++)
+    {
+       for(int j=0;j<n;j++)
+          cout<<int(c[i][j])<<" ";
+      cout<<endl;
+    }
+    for (int i = 0; i < n; i++)
+    {
+
+        delete[] mas2[i];
+        delete[] c[i];
+    }
+        delete[] mas2;
+        delete[] c;
+    system("pause");
+
+        return 0;
+}

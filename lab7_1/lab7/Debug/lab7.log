@@ -1,0 +1,4 @@
+﻿  lab7.cpp
+d:\вуз\lab7_1\lab7\lab7.cpp(14): warning C4101: codT: неиспользованная локальная переменная
+d:\вуз\lab7_1\lab7\lab7.cpp(55): warning C4101: q: неиспользованная локальная переменная
+  lab7.vcxproj -> D:\ВУЗ\lab7_1\Debug\lab7.exe

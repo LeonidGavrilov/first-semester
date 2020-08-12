@@ -1,0 +1,5 @@
+﻿  lab8.cpp
+d:\вуз\lab9\lab8\lab8.cpp(13): warning C4244: инициализация: преобразование "double" в "unsigned int", возможна потеря данных
+d:\вуз\lab9\lab8\lab8.cpp(20): warning C4244: инициализация: преобразование "double" в "unsigned int", возможна потеря данных
+d:\вуз\lab9\lab8\lab8.cpp(21): warning C4244: инициализация: преобразование "double" в "unsigned int", возможна потеря данных
+  lab8.vcxproj -> D:\ВУЗ\lab9\Debug\lab8.exe
